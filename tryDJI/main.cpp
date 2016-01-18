@@ -28,8 +28,8 @@ void GetControl_CallBack(unsigned short res);
 void OnTime_handle(int);
 
 void Dji_Followme(void);
-double  *lati_mobile;
-double  * longti_mobile;
+double  lati_mobile;
+double  longti_mobile;
 double GetLatDistance(double DestLat,double TargetLat);
 double GetLngDistance(double lat, double DestLng, double TargetLng);
 attitude_data_t fellowData = {0b10000000,0,0,0,0};
@@ -230,10 +230,10 @@ void Dji_Followme(void)
     if(Transmission::IsValid)
     {
         DJI_Pro_Get_GPS(&pos);
-        *lati_mobile=Transmission::Latitude;
-        *longti_mobile=Transmission::Longitude;
-        fellowData.roll_or_x = GetLatDistance(pos.alti, *lati_mobile);
-        fellowData.pitch_or_y = GetLngDistance(*lati_mobile, pos.longti,*longti_mobile);
+        lati_mobile=Transmission::Latitude*3.141592654/180;
+        longti_mobile=Transmission::Longitude*3.141592654/180;
+        fellowData.roll_or_x = GetLatDistance(pos.lati, lati_mobile);
+        fellowData.pitch_or_y = GetLngDistance(lati_mobile, pos.longti,longti_mobile);
         fellowData.yaw = 0;
         DJI_Pro_Attitude_Control(&fellowData);
     }
