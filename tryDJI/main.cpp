@@ -66,6 +66,7 @@ static void Display_Main_Menu(void)
 int main(int argc,char **argv)
 {
     DJI_Pro_Register_Transparent_Transmission_Callback(Transmission::UpdatePositionCallBack);
+    //checkcheck
     //    bool IsSerialPortOpened = false;
     //    bool IsActivated = false;
     //    bool IsUnderControl = false;
