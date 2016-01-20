@@ -18,6 +18,7 @@ DJI_Pro_Link.cpp
 DJI_Pro_Rmu.cpp
 Transmission.cpp
 CTimer.cpp
+SmoothControl.cpp
 )
 INCLUDE_DIRECTORIES( #相关头文件的目录
 ${PROJET_SOURCE_DIR}

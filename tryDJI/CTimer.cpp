@@ -13,14 +13,18 @@
   
 using namespace std;  
 //////////////////////////public methods//////////////////////////  
-CTimer::CTimer():  
-    m_second(0), m_microsecond(0)  
+CTimer::CTimer()
 {  
+    m_second=0;
+    m_microsecond=0;
+    Callback=0;
 }  
   
-CTimer::CTimer(long second, long microsecond) :  
-    m_second(second), m_microsecond(microsecond)  
+CTimer::CTimer(long second, long microsecond)
 {  
+    m_second=second;
+    m_microsecond=microsecond;
+    Callback=0;
 }  
   
 CTimer::~CTimer()  
@@ -58,9 +62,4 @@ void CTimer::thread_proc()
         tempval.tv_usec = m_microsecond;  
         select(0, NULL, NULL, NULL, &tempval);  
     }  
-}  
-  
-void CTimer::OnTimer()  
-{  
-    cout<<"Timer once..."<<endl;  
 }  
