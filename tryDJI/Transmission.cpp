@@ -2,8 +2,11 @@
 
 double Transmission::Latitude=0;
 double Transmission::Longitude=0;
+double Transmission::Altitude=0;
+double Transmission::Speed=0;
+double Transmission::Accuracy=0;
 bool Transmission::IsValid=false;
-int Transmission::dataLength=18;
+int Transmission::dataLength=42;
 struct itimerval Transmission::tick={{0,5000000},{0,5000000}};
 
 Transmission::Transmission()
@@ -19,7 +22,10 @@ void Transmission::UpdatePositionCallBack(unsigned char *buf,unsigned char len)
     {
         memcpy(&Transmission::Latitude,&data[0],8);
         memcpy(&Transmission::Longitude,&data[8],8);
-        Transmission::IsValid=data[16];
+        memcpy(&Transmission::Altitude,&data[16],8);
+        memcpy(&Transmission::Speed,&data[24],8);
+        memcpy(&Transmission::Accuracy,&data[32],8);
+        Transmission::IsValid=data[dataLength-2];
         //setitimer(ITIMER_REAL,&Transmission::tick,NULL);
     }
     else

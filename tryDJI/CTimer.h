@@ -29,8 +29,7 @@ private:
         (static_cast<CTimer*>(p))->thread_proc();
     }  
     void thread_proc();
-    void OnTimer();  
-    CTimerCallBack Callback=0;
+    CTimerCallBack Callback;
 public:  
     CTimer();  
     CTimer(long second, long microsecond);  
