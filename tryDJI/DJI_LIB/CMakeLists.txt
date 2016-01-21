@@ -22,3 +22,4 @@ DJI_Pro_Config.h
 
 add_library(DJI STATIC ${SOURCE_FILES})
 
+set( CMAKE_BUILD_TYPE Debug )

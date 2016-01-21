@@ -7,6 +7,7 @@ find_package( OpenCV REQUIRED )
 aux_source_directory(. SRC_LIST)
 
 add_subdirectory(DJI_LIB)
+add_subdirectory(OpenCV_LIB)
 link_libraries (pthread)
 ADD_DEFINITIONS(-DPLATFORM_LINUX)
 ADD_DEFINITIONS(-DTINYXML_CFG)            

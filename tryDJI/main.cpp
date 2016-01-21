@@ -16,6 +16,11 @@
 #include"CTimer.h"
 #include"SmoothControl.h"
 
+
+#include"OpenCV_LIB/Marker.hpp"
+#include"OpenCV_LIB/MarkerDetector.hpp"
+#include"OpenCV_LIB/BGRAVideoFrame.h"
+
 using namespace std;
 
 extern  bool IsSerialPortOpened;
@@ -94,6 +99,23 @@ int main(int argc,char **argv)
     {
         cv::waitKey(0);
     }
+    double pi=3.14159265358979326226;
+    //参数由matlab获得
+    float fc1, fc2, cc1, cc2, kc1, kc2, kc3, kc4;
+    fc1 = 685.753598683736 / 1.6*2.25;
+    fc2 = 686.632925917435 / 1.6*2.25;
+    cc1 = 564.317943775214 / 1.6*2.25;
+    cc2 = 360.798124289830 / 1.6*2.25;
+    kc1 = -0.307489100043000;
+    kc2 = 0.0791349291021755;
+    kc3 = 0.00508;
+    kc4 = -0.00051;
+    float distorsionCoeff[]={kc1,kc2,kc3,kc4};
+    CameraCalibration calibration(fc1,fc2,cc1,cc2,distorsionCoeff);
+    MarkerDetector markerDetector(calibration);
+    markerDetector.ChangeMarkerSize(0.9);
+    cv::VideoCapture cap;
+    cap.open(0);
     return 0;
 }
 void Dji_Followme(void)
