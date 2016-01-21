@@ -1,5 +1,4 @@
 #include"CTimer.h"
-
 class SmoothControl
 {
 public:
@@ -12,4 +11,5 @@ private:
     double command,dcommand,ddcommand,diff;
     int targetSGN,SGN;
     int sgn(double input);
+    double abs(double input);
 };

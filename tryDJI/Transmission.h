@@ -8,7 +8,7 @@
 class Transmission
 {
 public:
-    static double Latitude,Longitude;
+    static double Latitude,Longitude,Altitude,Speed,Accuracy;
     static bool IsValid;
     static int dataLength;
     static struct itimerval tick;

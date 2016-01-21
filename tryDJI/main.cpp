@@ -37,6 +37,8 @@ attitude_data_t fellowData = {0b10000000,0,0,0,0};
 activate_data_t user_act_data;
 SmoothControl xcontrol,ycontrol;
 
+//debug
+/////////
 
 
 int main(int argc,char **argv)
@@ -84,6 +86,9 @@ int main(int argc,char **argv)
     DJI_Pro_Activate_API(&user_act_data,DJI_Pro_User_Activate_Callback);
     CTimer timer(0,50);                                                                                   //wzL
     timer.StartTimer(&OnTime_handle);                                                        //
+    //debug
+
+    /////////
     //loop forbid exit
     while(1)
     {

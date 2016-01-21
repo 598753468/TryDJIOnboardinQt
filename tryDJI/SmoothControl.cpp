@@ -7,7 +7,7 @@ SmoothControl::SmoothControl()
     dcommand=0;
     ddcommand=0;
     intervalMS=50;
-    maxCommandDiffPerSec=2;
+    maxCommandDiffPerSec=5;
     ddcommandRate=0.01;
 }
 
@@ -23,10 +23,17 @@ double SmoothControl::SendCommand(double targetCommand)
     else
     {
         diff=targetCommand-command;
+
         ddcommand=diff*ddcommandRate;
         dcommand=dcommand+ddcommand;
-        if(dcommand>(maxCommandDiffPerSec/intervalMS))
-        command=command+dcommand;
+        if(abs(dcommand)>(maxCommandDiffPerSec/(1000/intervalMS)))
+        {
+            command=command+sgn(dcommand)*maxCommandDiffPerSec/(1000/intervalMS);
+        }
+        else
+        {
+            command=command+dcommand;
+        }
     }
     return command;
 }
@@ -45,5 +52,14 @@ int SmoothControl::sgn(double input)
     {
         return 0;
     }
+}
+
+double SmoothControl::abs(double input)
+{
+    if(input<0)
+    {
+        input=-input;
+    }
+    return input;
 }
 
