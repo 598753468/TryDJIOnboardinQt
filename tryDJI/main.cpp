@@ -9,7 +9,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
-#include "DJI_Pro_Sample.h"
+#include "DJI_LIB/DJI_Pro_Sample.h"
 #include "math.h"
 #include"Transmission.h"
 #include<opencv2/opencv.hpp>

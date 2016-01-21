@@ -1,5 +1,4 @@
 #include"SmoothControl.h"
-#include"math.h"
 
 SmoothControl::SmoothControl()
 {

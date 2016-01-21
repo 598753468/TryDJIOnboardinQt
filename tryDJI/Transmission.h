@@ -1,3 +1,5 @@
+#ifndef Transmission_H_
+#define Transmission_H_
 #include<sys/time.h>
 #include<signal.h>
 #include <iostream>
@@ -18,4 +20,5 @@ private:
     static unsigned char CheckSum(unsigned char buf[]);
     static void  OnTimeOut(int hehe);
 };
+#endif
 
